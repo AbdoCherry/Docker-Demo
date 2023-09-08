@@ -5,7 +5,6 @@ import utils
 def lambda_handler(event, context):
     
     try:
-        
         env_vars = utils.load_envs()
         utils.load_mysql(env_vars = env_vars)
         
