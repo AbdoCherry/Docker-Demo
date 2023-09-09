@@ -4,7 +4,7 @@ import utils
 
 def lambda_handler(event, context):
     
-    print('Let\'s test if volumes works - Test 2')
+    print('Let\'s test if volumes works - Test 5')
     try:
         env_vars = utils.load_envs()
         utils.load_mysql(env_vars = env_vars)
