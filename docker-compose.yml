@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  docker-demo-dev:
+    image: docker-demo:dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: docker-demo-dev
+    env_file:
+      - envs/dev.env
+    volumes:
+      - docker-demo-volume:/app/src
+
+  docker-demo-prd:
+    image: docker-demo:prd
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: docker-demo-prd
+    env_file:
+      - envs/prd.env
+    volumes:
+      - docker-demo-volume:/app/src
+
+volumes:
+  docker-demo-volume:
+    name: docker-demo-volume
+      

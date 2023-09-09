@@ -1,6 +1,7 @@
 # Importing necessary modules
 
 import os
+ 
 from typing import *
 import mysql.connector
 from mysql.connector import Error
@@ -50,9 +51,12 @@ def load_mysql(env_vars : Dict) -> None:
             cursor.execute('SHOW DATABASES;')
             databases = cursor.fetchall()
             if 'db_emp' in [db[0] for db in databases]:
-                print(f'\nSCHEMA \'db_emp\' is Database on host {env_vars["DB_HOST"]} in Environment {env_vars["ENVIRONMENT"]}')
+                print(f'\nDatabase \'db_emp\' is available in MySQL Server on host {env_vars["DB_HOST"]} in Environment {env_vars["ENVIRONMENT"]}')
                 print('All Databases:')
                 print([db[0] for db in databases])
+            
+            else:
+                print('Connection somehow not possible')
                 
             cursor.close()
             connection.close()
@@ -63,8 +67,6 @@ def load_mysql(env_vars : Dict) -> None:
     except Error as e:
         print(f'Error occured while connecting to MySQL DATABASE on host {env_vars["DB_HOST"]} in Environment {env_vars["ENVIRONMENT"]}')
         print(f'Error: {e}')
-
         
-    
-        
-    
+def hello_world():
+    print('Hello World')
